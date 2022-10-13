@@ -95,7 +95,9 @@
                     </button>
 
                     <button className=" my-1 font-semibold text-red-900 leading-tight rounded-full bg-red-100 px-3 py-1 md:mx-2"
-                        onClick={handleDelete}>
+                    @click="deleteuser(users._id)"
+                        
+                        >
 
                         Delete
                     </button>
@@ -162,7 +164,26 @@ this.getUsers()
 this.users=await Response.json();
 })
 .catch(error=>console.log(error.message))
+},
+
+
+
+async deleteuser (id){
+
+await fetch(`https://vijay982816-curd-brained-569pxxv7wvhwr5-3000.githubpreview.dev/employee/deleteEmployee/${id}`, { method: 'DELETE' })
+    .then((done) => {
+        
+        alert('deleted user successfully')
+        this.getUsers()
+    
+    })
+.catch(error=>console.log(error.message))
+
+
+
 }
+
+
     }
   }
 </script>
