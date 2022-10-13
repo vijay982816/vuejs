@@ -17,6 +17,13 @@
 
 
     </div>
+    <div class="form-control">
+           <label className="text-white text-sm font-bold leading-tight tracking-normal">Name</label>
+                            <input id="name" className="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="Ex. Hitesh"  v-model="name" name='name' />
+
+
+
+    </div>
   
     <div class="form-control">
            <label className="text-white text-sm font-bold leading-tight tracking-normal">Email</label>
@@ -80,19 +87,52 @@ methods:{
                     alert('Please fill all the detials')
                     return
                 }
-                const NewInformation = {
-                  name : this.name,
-                    email : this.email,
-                    phone : this.phone,
-                    city : this.city,
 
-                }
+
+                // const NewInformation = {
+                //   name : this.name,
+                //     email : this.email,
+                //     phone : this.phone,
+                //     city : this.city,
+
+                // }
                 
-                this.$emit('add-information', newInformation)
-                this.name = ' ',
-                this.age = ' ',
-                this.phone = null,
-                this.city = ''
+                // this.$emit('add-information', newInformation)
+
+                // this.name = ' ',
+                // this.age = ' ',
+                // this.phone = null,
+                // this.city = ''
+
+
+
+
+const formdata = new FormData();
+        formdata.append("name",  this.name)
+        formdata.append("age", this.email)
+        formdata.append("phone", this.phone)
+        formdata.append("city", this.city)
+        formdata.append("uploadProfileImage", this.uploadProfileImage)
+
+
+        const url = `${localenv.HOST}/api/users/adduser`
+
+        const config = {
+
+            headers: {
+                "Content-Type": "multipart/form-data",
+            }
+
+
+        }
+
+
+
+        const addedUser = await axios.post(url, formdata, config)
+            .catch(error => console.log(error.message))
+        setUsers(users.concat(addedUser.data.data))
+
+        return addedUser.data.message
 
 
 
