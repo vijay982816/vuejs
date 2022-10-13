@@ -143,9 +143,22 @@ async adduser (){
 
 console.log(this.name,this.email,this.phone,this.city)
 
-const addedUser = await fetch('http://example.com/movies.json',{method:'POST',body:{
-  name:this.name,phone:this.phone,email:this.email,city:this.city
-}})
+ const addedUser = await fetch('https://vijay982816-curd-brained-rv996pr4qpph55r-3000.githubpreview.dev/employee/Register',
+
+
+
+{
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({name:this.name,phone:this.phone,email:this.email,city:this.city})
+  }
+
+
+
+)
   .then((async (response) => await response.json()))
   .catch((error) => console.log(error.message));
 
@@ -153,6 +166,8 @@ const addedUser = await fetch('http://example.com/movies.json',{method:'POST',bo
   console.log(addedUser)
 
 
+
+  this.$router.push('/') 
 
 
 

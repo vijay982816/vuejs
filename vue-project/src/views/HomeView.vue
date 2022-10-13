@@ -178,9 +178,7 @@ async deleteuser (id){
 
 await fetch(`https://vijay982816-curd-brained-rv996pr4qpph55r-3000.githubpreview.dev/employee/deleteEmployee/${id}`, { method: 'DELETE' })
     .then((done) => {
-        
-        alert('deleted user successfully')
-        this.getUsers()
+           this.getUsers()
     
     })
 .catch(error=>console.log(error.message))
