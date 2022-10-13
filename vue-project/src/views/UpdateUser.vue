@@ -126,7 +126,7 @@
 
 <script>
 export default {
-name:"Register",
+name:"UpdateUser",
  data (){
             return {
                 name : '',

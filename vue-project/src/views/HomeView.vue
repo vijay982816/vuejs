@@ -25,37 +25,37 @@
 
 
 
-    <div className="antialiased font-sans bg-gray-200">
-                <div className="container mx-auto px-4 sm:px-8">
-                    <div className="py-8 lg:px-60">
+    <div class="antialiased font-sans bg-gray-200">
+                <div class="container mx-auto px-4 sm:px-8">
+                    <div class="py-8 lg:px-60">
                         <div>
-                            <h2 className="text-2xl font-semibold leading-tight">Users</h2>
+                            <h2 class="text-2xl font-semibold leading-tight">Users</h2>
                         </div>
 
-                        <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                            <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
-                                <table className="min-w-full leading-normal">
+                        <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                            <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                                <table class="min-w-full leading-normal">
                                     <thead>
                                         <tr>
                                             <th
-                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                                 User
                                             </th>
                                             <th
-                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                                 email
                                             </th>
                                             <th
-                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                                 phone
                                             </th>
                                             <th
-                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                                 city
                                             </th>
                                          
                                             <th
-                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                                 Action
                                             </th>
                                         </tr>
@@ -64,37 +64,36 @@
 
 
                                       <tr v-for = "(users) in users" :key ="name" >
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <div className="flex items-center">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <div class="flex items-center">
                       
-                        <div className="ml-3">
-                            <p className="text-gray-900 whitespace-no-wrap">
+                        <div class="ml-3">
+                            <p class="text-gray-900 whitespace-no-wrap">
                               {{users.name}}
                             </p>
                         </div>
                     </div>
                 </td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">{{users.email}}</p>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <p class="text-gray-900 whitespace-no-wrap">{{users.email}}</p>
                 </td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">{{users.email}}</p>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <p class="text-gray-900 whitespace-no-wrap">{{users.email}}</p>
                 </td>
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">{{users.city}}</p>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <p class="text-gray-900 whitespace-no-wrap">{{users.city}}</p>
                 </td>
 
 
 
-                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center md:text-left">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center md:text-left">
 
-                    <button className="my-1 px-3 py-1 font-semibold text-green-900 leading-tight bg-green-100 rounded-full " 
-                    >
+                 
 
-                        Update
-                    </button>
 
-                    <button className=" my-1 font-semibold text-red-900 leading-tight rounded-full bg-red-100 px-3 py-1 md:mx-2"
+                    <RouterLink :to="`/UpdateUser/${users._id}`"  class="my-1 px-3 py-1 font-semibold text-green-900 leading-tight bg-green-100 rounded-full "  >update</RouterLink>
+
+                    <button class=" my-1 font-semibold text-red-900 leading-tight rounded-full bg-red-100 px-3 py-1 md:mx-2"
                     @click="deleteuser(users._id)"
                         
                         >
@@ -112,11 +111,11 @@
 
 
                                 <div
-                                    className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
+                                    class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
 
-                                    <div className="inline-flex mt-2 xs:mt-0">
+                                    <div class="inline-flex mt-2 xs:mt-0">
                                         <button
-                                            className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
+                                            class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
 
 
 <RouterLink to="/register">Add user</RouterLink>
@@ -164,6 +163,14 @@ import { RouterLink } from 'vue-router'
 this.getUsers()
     },
     methods:{
+
+update (){
+
+this.$router.push({name: '/products/:id/', params: { id: 1 }})
+    
+},
+
+
        async getUsers(){
          const getingUsers = await fetch('https://vijay982816-curd-brained-rv996pr4qpph55r-3000.githubpreview.dev/employee/getEmployees')
         .then(async Response=>{
