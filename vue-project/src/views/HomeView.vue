@@ -1,15 +1,3 @@
-<script >
-
-import Navbar from '../components/Navbar.vue'
-
-  components:{
-        Navbar
-     
-    }
-    
-
-</script>
-
 <template>
 
 
@@ -29,10 +17,7 @@ import Navbar from '../components/Navbar.vue'
       
     </div>
     <div>
-      <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Register</a>
-
-            <a href="#" class="ml-10 inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Signup</a>
-    </div>
+       </div>
 
   </div>
 </nav>
@@ -75,31 +60,52 @@ import Navbar from '../components/Navbar.vue'
                                             </th>
                                         </tr>
                                     </thead>
-                                    <!-- <tbody>
+                                    <tbody>
 
 
-                                        {users.map((element) => {
+                                      <tr v-for = "(users) in users" :key ="name" >
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <div className="flex items-center">
+                      
+                        <div className="ml-3">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              {{users.name}}
+                            </p>
+                        </div>
+                    </div>
+                </td>
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <p className="text-gray-900 whitespace-no-wrap">{{users.email}}</p>
+                </td>
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <p className="text-gray-900 whitespace-no-wrap">{{users.email}}</p>
+                </td>
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <p className="text-gray-900 whitespace-no-wrap">{{users.city}}</p>
+                </td>
 
 
 
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center md:text-left">
 
-                                            const base64String = btoa(
-                                                String.fromCharCode(...new Uint8Array(element.profileImage.data.data))
-                                            );
+                    <button className="my-1 px-3 py-1 font-semibold text-green-900 leading-tight bg-green-100 rounded-full " 
+                    >
 
+                        Update
+                    </button>
 
+                    <button className=" my-1 font-semibold text-red-900 leading-tight rounded-full bg-red-100 px-3 py-1 md:mx-2"
+                        onClick={handleDelete}>
 
-                                            return <User key={element._id} id={element._id} imgUrl={`data:${element.profileImage.contentType};base64,${base64String}`} name={element.name} age={element.age} />
-                                        }
+                        Delete
+                    </button>
 
+                    
 
+                </td>
+            </tr>   
 
-
-
-
-                                        )}
-
-                                    </tbody> -->
+                                    </tbody>
                                 </table>
 
 
@@ -112,7 +118,6 @@ import Navbar from '../components/Navbar.vue'
 
 
 
-                                            <!-- <Link to="/adduser">Add User</Link> -->
 
 
 Add user
@@ -134,3 +139,30 @@ Add user
 
 
 </template>
+
+
+
+<script>
+  export default {
+     name : "AllUser",
+    data() {
+      return {
+  users:[]
+    
+   
+      }
+    },
+    created(){
+this.getUsers()
+    },
+    methods:{
+       async getUsers(){
+         const getingUsers = await fetch('https://vijay982816-curd-brained-569pxxv7wvhwr5-3000.githubpreview.dev/employee/getEmployees')
+        .then(async Response=>{
+this.users=await Response.json();
+})
+.catch(error=>console.log(error.message))
+}
+    }
+  }
+</script>

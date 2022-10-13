@@ -74,76 +74,10 @@ name:"Register",
         },
 
 methods:{
-   onSubmit(e){
-
-
-    // console.log(this.email,this.phone,this.city,this.password)
-    // alert(this.city)
-
-//    alert(this.email)
-
-                // e.preventDefault()
-                if(!this.name||!this.phone || !this.city || !this.email){
-                    alert('Please fill all the detials')
-                    return
-                }
-
-
-                // const NewInformation = {
-                //   name : this.name,
-                //     email : this.email,
-                //     phone : this.phone,
-                //     city : this.city,
-
-                // }
-                
-                // this.$emit('add-information', newInformation)
-
-                // this.name = ' ',
-                // this.age = ' ',
-                // this.phone = null,
-                // this.city = ''
 
 
 
-
-const formdata = new FormData();
-        formdata.append("name",  this.name)
-        formdata.append("age", this.email)
-        formdata.append("phone", this.phone)
-        formdata.append("city", this.city)
-        formdata.append("uploadProfileImage", this.uploadProfileImage)
-
-
-        const url = `${localenv.HOST}/api/users/adduser`
-
-        const config = {
-
-            headers: {
-                "Content-Type": "multipart/form-data",
-            }
-
-
-        }
-
-
-
-        const addedUser = await axios.post(url, formdata, config)
-            .catch(error => console.log(error.message))
-        setUsers(users.concat(addedUser.data.data))
-
-        return addedUser.data.message
-
-
-
-
-            }
-
-
-     
 }
-
-
 
 }
 </script>
