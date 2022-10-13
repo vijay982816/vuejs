@@ -19,7 +19,7 @@ const router = createRouter({
     {
       path: '/UpdateUser/:id',
       name: 'UpdateUser',
-      component: Register
+      component: UpdateUser
     },
     {
       path: '/about',

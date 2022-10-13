@@ -127,15 +127,26 @@
 <script>
 export default {
 name:"UpdateUser",
+
  data (){
             return {
                 name : '',
                 email : '',
                 phone : '',
                 city : '',
+                user:[]
 
             }
         },
+        
+created(){
+
+
+    this.id=this.$route.params._id
+    // console.log('myid is ',this.id),
+   
+
+},
 
 methods:{
 
@@ -143,37 +154,67 @@ async adduser (){
 
 console.log(this.name,this.email,this.phone,this.city)
 
- const addedUser = await fetch('https://vijay982816-curd-brained-rv996pr4qpph55r-3000.githubpreview.dev/employee/Register',
 
 
 
-{
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({name:this.name,phone:this.phone,email:this.email,city:this.city})
-  }
+//  const addedUser = await fetch('https://vijay982816-curd-brained-rv996pr4qpph55r-3000.githubpreview.dev/employee/Register',
 
 
 
-)
-  .then((async (response) => await response.json()))
-  .catch((error) => console.log(error.message));
+// {
+//     method: 'POST',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({name:this.name,phone:this.phone,email:this.email,city:this.city})
+//   }
 
 
-  console.log(addedUser)
+
+// )
+//   .then((async (response) => await response.json()))
+//   .catch((error) => console.log(error.message));
+
+
+//   console.log(addedUser)
 
 
 
-  this.$router.push('/') 
+//   this.$router.push('/') 
 
 
+
+
+// this.adduser()
+
+this.getuser()
 
 }
 
+,
 
+ async getuser (){
+
+console.log('get data')
+
+    
+const userdata = await fetch(`https://vijay982816-curd-brained-rv996pr4qpph55r-3000.githubpreview.dev/employee/getEmployee/${this.$route.params.id}`)
+
+
+ let user= await userdata.json()
+
+ this.name=user.name;
+ this.email=user.email;
+ this.phone=user.phone;
+ this.city=user.city;
+
+console.log(userdata)
+
+    
+
+
+}
 
 }
 
