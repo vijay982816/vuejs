@@ -1,5 +1,5 @@
 <template>
-
+<div>
 
 <div>
   <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
@@ -124,6 +124,9 @@
 
 Add user
 
+
+
+
                                         </button>
 
 
@@ -138,6 +141,7 @@ Add user
                 </div>
             </div>
 
+</div>
 
 
 </template>
@@ -145,6 +149,9 @@ Add user
 
 
 <script>
+
+
+import { RouterLink } from 'vue-router'
   export default {
      name : "AllUser",
     data() {
@@ -159,7 +166,7 @@ this.getUsers()
     },
     methods:{
        async getUsers(){
-         const getingUsers = await fetch('https://vijay982816-curd-brained-569pxxv7wvhwr5-3000.githubpreview.dev/employee/getEmployees')
+         const getingUsers = await fetch('https://vijay982816-curd-brained-rv996pr4qpph55r-3000.githubpreview.dev/employee/getEmployees')
         .then(async Response=>{
 this.users=await Response.json();
 })
@@ -170,7 +177,7 @@ this.users=await Response.json();
 
 async deleteuser (id){
 
-await fetch(`https://vijay982816-curd-brained-569pxxv7wvhwr5-3000.githubpreview.dev/employee/deleteEmployee/${id}`, { method: 'DELETE' })
+await fetch(`https://vijay982816-curd-brained-rv996pr4qpph55r-3000.githubpreview.dev/employee/deleteEmployee/${id}`, { method: 'DELETE' })
     .then((done) => {
         
         alert('deleted user successfully')
