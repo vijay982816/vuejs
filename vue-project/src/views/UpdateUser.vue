@@ -100,9 +100,9 @@
 
                             <div class="flex items-center justify-start w-full">
                                 <button class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm"
-                                @click="adduser"
+                                @click="updateUser"
                                 
-                                >Submit</button>
+                                >Update User</button>
 
 
 
@@ -142,53 +142,52 @@ name:"UpdateUser",
 created(){
 
 
-    this.id=this.$route.params._id
-    // console.log('myid is ',this.id),
+   this.getuser()
    
 
 },
 
 methods:{
 
-async adduser (){
+async updateUser (){
 
 console.log(this.name,this.email,this.phone,this.city)
 
 
 
 
-//  const addedUser = await fetch('https://vijay982816-curd-brained-rv996pr4qpph55r-3000.githubpreview.dev/employee/Register',
+ const updateUser = await fetch(`https://vijay982816-curd-brained-rv996pr4qpph55r-3000.githubpreview.dev/employee/updateEmployee/${this.$route.params.id}`,
 
 
 
-// {
-//     method: 'POST',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({name:this.name,phone:this.phone,email:this.email,city:this.city})
-//   }
+{
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({name:this.name,phone:this.phone,email:this.email,city:this.city})
+  }
 
 
 
-// )
-//   .then((async (response) => await response.json()))
-//   .catch((error) => console.log(error.message));
+)
+  .then((async (response) => await response.json()))
+  .catch((error) => console.log(error.message));
 
 
-//   console.log(addedUser)
-
-
-
-//   this.$router.push('/') 
+  console.log(updateUser)
 
 
 
+  this.$router.push('/') 
 
-// this.adduser()
 
-this.getuser()
+
+
+
+
+
 
 }
 
@@ -196,9 +195,6 @@ this.getuser()
 
  async getuser (){
 
-console.log('get data')
-
-    
 const userdata = await fetch(`https://vijay982816-curd-brained-rv996pr4qpph55r-3000.githubpreview.dev/employee/getEmployee/${this.$route.params.id}`)
 
 
@@ -208,11 +204,6 @@ const userdata = await fetch(`https://vijay982816-curd-brained-rv996pr4qpph55r-3
  this.email=user.email;
  this.phone=user.phone;
  this.city=user.city;
-
-console.log(userdata)
-
-    
-
 
 }
 
